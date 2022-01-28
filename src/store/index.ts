@@ -1,8 +1,9 @@
-import { createStore } from "vuex";
+import Vuex from "vuex";
+import { Items } from "./modules/Items/index";
+import { RootState } from "./types";
 
-export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+export default new Vuex.Store<RootState>({
+  modules: {
+    Items,
+  },
 });
