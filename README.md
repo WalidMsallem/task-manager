@@ -1,41 +1,74 @@
-#
+## Quick start
 
-## Project setup
-
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
+1.  Clone this repo using `git@github.com:WalidMsallem/task-manager.git`
 
 ```
-yarn serve
+$  git clone git@github.com:WalidMsallem/task-manager.git
 ```
 
-### Compiles and minifies for production
+2.  Move to the appropriate directory: `cd task-manager`.
 
 ```
-yarn build
+$ cd task-manager
 ```
 
-### Run your unit tests
+3.  Install frontend dependencies and run the project.
 
 ```
-yarn test:unit
+$ yarn install
+$ yarn serve
 ```
 
-### Run your end-to-end tests
+_At this point the frontend will run under `http://localhost:4000`._
+
+Now you're ready to rumble!
+
+## Demo
+
+Link of the demo on vercel :
+
+[Demo here](https://task-manager-lilac.vercel.app/)
+
+## General overview
+
+This project provides an interface to manage Facilities with a shema of :
 
 ```
-yarn test:e2e
+{
+id : number ;
+voice : string ;
+text: string ;
+}
 ```
 
-### Lints and fixes files
+So we can get the data from the mocky API, then add, modify or delete, and return the new list to the same API.
+
+"https://www.mocky.io/v2/5ae1c5792d00004d009d7e5c";
+
+## Test
+
+### End to end Test with Cypress
+
+Please make sure that the project is running on port `4000. `
+Open the terminal and run the project:
 
 ```
-yarn lint
+$  yarn serve
 ```
 
-### Customize configuration
+Then open another terminal and run this command
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```
+$  yarn test:e2e
+```
+
+### Unit testing and snapshot testing
+
+```
+$  yarn test:unit
+```
+
+## Contributor
+
+Developpeur : Walid M'sallem ( Full stack developpeur )
+Contact : walidmsallem@gmail.com
