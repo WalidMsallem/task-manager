@@ -5,6 +5,7 @@
       :name="name"
       :value="value"
       @input="$emit('onInput', $event.target.value)"
+      :data-cy="cyId"
     />
   </div>
   <div v-else class="input-group">
@@ -15,6 +16,7 @@
       @input="$emit('onInput', $event.target.value)"
       cols="30"
       rows="5"
+      :data-cy="cyId"
     ></textarea>
   </div>
 </template>
@@ -38,6 +40,9 @@ import { Options, Vue } from "vue-class-component";
     name: {
       type: String,
       required: true,
+    },
+    cyId: {
+      type: String,
     },
   },
 })

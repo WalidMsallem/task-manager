@@ -5,9 +5,9 @@ import { ItemState, Item } from "./types";
 import { RootState } from "../../types";
 import { v4 as uuidv4 } from "uuid";
 import urls from "./services";
+
 const actions: ActionTree<ItemState, RootState> = {
   async fetchItems({ commit }): Promise<any> {
-    console.log("fetchItems");
     try {
       commit("getItemsRequest");
       const response = await axios.get(urls.mockyApi);
@@ -30,11 +30,12 @@ const actions: ActionTree<ItemState, RootState> = {
     commit("deleteItem", id);
   },
   async uploadItems({ state, commit }): Promise<any> {
-    console.log("uploadItems");
     try {
-      commit("uploadItemsRequest");
-      const response = await axios.post(urls.mockyApi, state.items);
-      commit("uploadItemsSuccess", response.data);
+      if (state.items.length > 0) {
+        commit("uploadItemsRequest");
+        const response = await axios.post(urls.mockyApi, state.items);
+        commit("uploadItemsSuccess", response.data);
+      }
     } catch (error) {
       console.log(error);
       commit("uploadItemsfailure", error);

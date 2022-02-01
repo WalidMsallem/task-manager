@@ -1,6 +1,6 @@
 
 <template>
-  <button>
+  <button :data-cy="cyId">
     <img :src="iconSrc" alt="icon" />
   </button>
 </template>
@@ -15,6 +15,9 @@ import { Options, Vue } from "vue-class-component";
     },
     click: {
       type: Function,
+    },
+    cyId: {
+      type: String,
     },
   },
 })

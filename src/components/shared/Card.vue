@@ -1,19 +1,31 @@
 <template>
-  <div v-if="!isCreateMode" class="card-container">
+  <div v-if="!isCreateMode" class="card-container" data-cy="card-container">
     <div class="pre-bloc">
       <input type="checkbox" id="scales" name="scales" checked />
       <img src="icons/person-1.png" alt="delete-icon" />
     </div>
     <div class="content">
-      <div class="title" @click="openEditTitle">
-        <span v-if="!editTitle">{{ title }}</span>
-        <input v-else v-model="editedTitle" @blur="onBlurEditTitle" />
+      <div class="title" @click="openEditTitle" data-cy="title-container">
+        <span v-if="!editTitle" data-cy="title-plain-text">{{ title }}</span>
+        <input
+          v-else
+          v-model="editedTitle"
+          @blur="onBlurEditTitle"
+          data-cy="title-input"
+        />
         <!-- {{ title }} -->
       </div>
       <div class="description">{{ description }}</div>
     </div>
-    <div class="actions">
-      <img src="icons/delete.svg" alt="delete-icon" @click="onDelete" />
+    <div class="actions-wrapper">
+      <!-- <img src="alt" ="delete-icon" /> -->
+      <div class="actions" data-cy="card-actions">
+        <CustomIconButton
+          iconSrc="icons/delete.svg"
+          @click="onDelete"
+          cyId="delete-task-button"
+        />
+      </div>
     </div>
   </div>
   <div v-else class="card-container">
@@ -23,6 +35,7 @@
         :value="titleInput"
         @onInput="(value) => (titleInput = value)"
         name="voice-name"
+        cyId="input-voice-name"
       />
       <InputGroup
         isTextarea
@@ -30,11 +43,12 @@
         :value="descriptionInput"
         @onInput="(value) => (descriptionInput = value)"
         name="description"
+        cyId="input-voice-description"
       />
       <div v-if="error && isCreateMode" class="error">
         {{ error }}
       </div>
-      <button @click="onAddItem">Add</button>
+      <button @click="onAddItem" data-cy="submit-add-task">Add</button>
     </div>
   </div>
 </template>
@@ -42,11 +56,14 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import InputGroup from "./InputGroup.vue";
+import CustomIconButton from "./CustomIconButton.vue";
+
 import { mapActions } from "vuex";
 
 @Options({
   components: {
     InputGroup,
+    CustomIconButton,
   },
   props: {
     isCreateMode: { type: Boolean },
@@ -160,15 +177,22 @@ export default class Card extends Vue {}
     margin-left: 20px;
   }
 }
-.actions {
+
+.error {
+  color: red;
+  width: 100%;
+  margin: 5px;
+}
+.actions-wrapper {
   flex: 0.5;
   img {
     cursor: pointer;
   }
 }
-.error {
-  color: red;
-  width: 100%;
-  margin: 5px;
+.actions {
+  display: none;
+}
+.card-container:hover .actions {
+  display: block;
 }
 </style>

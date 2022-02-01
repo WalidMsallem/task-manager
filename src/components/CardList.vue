@@ -1,5 +1,5 @@
 <template>
-  <div class="container items-list">
+  <div class="container items-list" data-cy="tasks-list-container">
     <div v-show="getOrUploadloading">
       <div class="spinner-mask"></div>
       <div class="spinner"></div>
@@ -12,10 +12,14 @@
       :title="item.voice"
       :id="item.id"
     />
-    <div v-if="allItems.length !== 0">
+    <div v-if="allItems.length !== 0" data-cy="create-task-section">
       <Card v-if="isOpenAddCard" isCreateMode :toggleAddCard="toggleAddCard" />
       <div v-else class="add-item">
-        <img src="icons/add-row.svg" alt="add-row" @click="toggleAddCard" />
+        <CustomIconButton
+          iconSrc="icons/add-row.svg"
+          @click="toggleAddCard"
+          cyId="open-add-item-form"
+        />
       </div>
     </div>
   </div>
@@ -25,12 +29,14 @@
 import { Options, Vue } from "vue-class-component";
 import Card from "@/components/shared/Card.vue";
 import Header from "@/components/Header.vue";
+import CustomIconButton from "./shared/CustomIconButton.vue";
 import { mapGetters, mapActions } from "vuex";
 
 @Options({
   components: {
     Header,
     Card,
+    CustomIconButton,
   },
   computed: {
     ...mapGetters(["allItems", "getOrUploadloading"]),

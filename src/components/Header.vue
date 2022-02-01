@@ -5,11 +5,16 @@
     >
       <div class="title">Transcriptions</div>
       <div>
-        <CustomIconButton iconSrc="./icons/upload.svg" @click="uploadItems" />
+        <CustomIconButton
+          iconSrc="./icons/upload.svg"
+          @click="uploadItems"
+          cyId="upload-data"
+        />
 
         <CustomIconButton
           iconSrc="./icons/fetch-document.svg"
           @click="fetchItems"
+          cyId="fetch-data"
         />
       </div>
     </div>
