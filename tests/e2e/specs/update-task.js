@@ -11,6 +11,7 @@ describe("Test Scenario: Update task", () => {
   });
 
   it("Click on title/voice", () => {
+    cy.wait(1500);
     cy.get("[data-cy=title-container]").first().click();
     cy.get("[data-cy=title-input]")
       .first()

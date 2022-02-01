@@ -11,6 +11,7 @@ describe("Test Scenario: Delete task", () => {
   });
 
   it("Delete the first task", () => {
+    cy.wait(1500);
     cy.get("[data-cy=card-actions]").first().invoke("show");
     cy.get("[data-cy=delete-task-button]").first().invoke("show").click();
   });

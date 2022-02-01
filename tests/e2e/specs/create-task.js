@@ -11,6 +11,7 @@ describe("Test Scenario: Add task to the list", () => {
   });
 
   it("Open add task form", () => {
+    cy.wait(1500);
     cy.get("[data-cy=open-add-item-form]").click();
   });
   it("Check the rendering of the form", () => {
