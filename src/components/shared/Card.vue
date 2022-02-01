@@ -60,7 +60,7 @@ import { mapActions } from "vuex";
       type: Function,
     },
     id: {
-      type: Number,
+      type: String,
     },
   },
   computed: {
