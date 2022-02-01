@@ -10,6 +10,10 @@ import CardList from "@/components/CardList.vue";
   components: {
     CardList,
   },
+  metaInfo: {
+    title: "Unbabel",
+    titleTemplate: "%s | Task manager",
+  },
 })
 export default class Home extends Vue {}
 </script>
